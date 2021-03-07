@@ -25,7 +25,11 @@ def gostock(selected_stock):
     TODAY = date.today().strftime("%Y-%m-%d")
     data_load_state = st.text("Load data for " + selected_stock +" ...")
     data = load_data(selected_stock, START, TODAY)
-    data_load_state = st.success("Loading data ... done!")
+    if(len(data)<4):
+        data_load_state = st.error("Loading data ... Error: stock or index not found")
+        return
+    else:
+        data_load_state = st.success("Loading data ... done!")
     st.subheader('Raw data')
     st.write(data.tail())
 
