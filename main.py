@@ -64,7 +64,7 @@ selected_stock = st.text_input("Write the name of the stock", "^IXIC")
 
 n_days = st.slider("Days of prediction: ", 1, 365, 100)
 period = n_days
-if st.button("Go") or selected_stock:
+if st.button("Go"):
     gostock(selected_stock)
 
 
