@@ -10,7 +10,10 @@ def load_data(ticker, START, TODAY):
     stock = yf.Ticker(ticker)
     #data = yf.download(ticker, START, TODAY)
     data = stock.history(start=START, end=TODAY)
-    shortName = stock.info['shortName']
+    try:
+        shortName = stock.info['shortName']
+    except:
+        shortName = selected_stock
     data.reset_index(inplace=True)
     return data, shortName
 
